@@ -2,7 +2,7 @@
 
 A **C++11 programmed** AI will play the game of Halma, an adversarial game with some similarities to checkers. The game uses a 16x16 checkered gameboard. Each player starts with 19 game pieces clustered in diagonally opposite corners of the board. To win the game, a player needs to transfer all of their pieces from their starting corner to the opposite corner, into the positions that were initially occupied by the opponent. Read [this](https://en.wikipedia.org/wiki/Halma) article for further details on Halma and its rules.
 
-Essentially, our agent will evaluate the gameboard and output the **best / optimal** move by using [Alpha Beta Pruning](https://en.wikipedia.org/wiki/Alpha_beta_pruning) Minimax algorithm.
+Essentially, our agent will evaluate the gameboard and output the **best / optimal** move by using [Alpha Beta Pruning](https://en.wikipedia.org/wiki/Alpha_beta_pruning) Minimax algorithm upto 3-ply.
 
 PS. This was homework #2 of CSCI 561 - Fall 2019 - Foundations of Artificial Intelligence - under [Professor Laurent Itti](http://ilab.usc.edu/itti/).
 
@@ -15,13 +15,13 @@ PS. This was homework #2 of CSCI 561 - Fall 2019 - Foundations of Artificial Int
 
 ### input.txt Format
 
-- **First line:** A string SINGLE or GAME to let you know whether you are playing a single move (and can use all of the available time for it) of playing a full game with potentially many moves.
-- **Second line:** A string BLACK or WHITE indicating which color you play. 
+- **First line:** A string SINGLE or GAME to let the AI know whether we are playing a single move (and can use all of the available time for it) of playing a full game with potentially many moves.
+- **Second line:** A string BLACK or WHITE indicating which color the agent will play. 
 - **Third line:** A strictly positive floating point number indicating the amount of total play time remaining for the agent.
 - **Next 16 lines:** Description of the game board, with 16 lines of 16 symbols each:
--- W for a grid cell occupied by a white piece
--- B for a grid cell occupied by a black piece
--- . (a dot) for an empty grid cell
+	* W for a grid cell occupied by a white piece
+	* B for a grid cell occupied by a black piece
+	* . (a dot) for an empty grid cell
 
 Sample input.txt file:
 ```
@@ -57,3 +57,14 @@ Sample output.txt file:
 ```
 J 14,13 12,11
 ```
+
+## Miscellaneous Notes
+- The agent could take anywhere from 0.002s to 30s, it highly depends on the gameboard and the CPU.
+- My observations on runtime (On an Intel i7 9th Gen CPU):
+	* Initial Game: All pieces are in their respective camps, these moves take 0.002s to 5s.
+	* Mid Game: All pieces are out of their respective camps, these moves take 5s to 30s.
+	* End Game: All pieces are nearing to the opposite destination camps, these moves take 4s to 8s.
+- Works on a file named "input.txt", **NOT** "input50.txt" or "inputXYZ.txt".
+- The "input.txt" file has to be on the same directory level as that of "halma_ai.cpp".
+- The program will overwrite the "output.txt" file if one already exists.
+- The contents of "input.txt" should strictly follow the format mentioned [above](#inputtxt-format), otherwise you may run into an unexpected error.
