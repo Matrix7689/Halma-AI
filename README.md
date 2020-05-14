@@ -59,6 +59,7 @@ J 14,13 12,11
 ```
 
 ## Miscellaneous Notes
+- In order to avoid deadlock in a game, "playdata.txt" stores the previous move's starting and ending X Y co-ordinates.
 - The agent could take anywhere from 0.002s to 30s, it highly depends on the gameboard and the CPU.
 - My observations on runtime (On an Intel i7 9th Gen CPU):
 	* Initial Game: All pieces are in their respective camps, these moves take 0.002s to 5s.
@@ -68,3 +69,6 @@ J 14,13 12,11
 - The "input.txt" file has to be on the same directory level as that of "halma_ai.cpp".
 - The program will overwrite the "output.txt" file if one already exists.
 - The contents of "input.txt" should strictly follow the format mentioned [above](#inputtxt-format), otherwise you may run into an unexpected error.
+
+## Credits
+- [Halma Editor Gameboard](https://github.com/panyz522/CS561-HalmaEditor): For visualizing the gameboard and to make AI play against another AI / player.
