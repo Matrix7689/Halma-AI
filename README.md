@@ -1,5 +1,7 @@
 # Halma AI Game Playing Agent
 
+<div align="center"><img src="https://i.imgur.com/dIPBA5H.gif"/></div>
+
 A **C++11 programmed** AI will play the game of Halma, an adversarial game with some similarities to checkers. The game uses a 16x16 checkered gameboard. Each player starts with 19 game pieces clustered in diagonally opposite corners of the board. To win the game, a player needs to transfer all of their pieces from their starting corner to the opposite corner, into the positions that were initially occupied by the opponent. Read [this](https://en.wikipedia.org/wiki/Halma) article for further details on Halma and its rules.
 
 Essentially, our agent will evaluate the gameboard and output the **best / optimal** move by using [Alpha Beta Pruning](https://en.wikipedia.org/wiki/Alpha_beta_pruning) Minimax algorithm upto 3-ply.
@@ -61,6 +63,7 @@ J 14,13 12,11
 ## Miscellaneous Notes
 - In order to avoid deadlock in a game, "playdata.txt" stores the previous move's starting and ending X Y co-ordinates.
 - The agent could take anywhere from 0.002s to 30s, it highly depends on the gameboard and the CPU.
+- The visualization GIF displayed above is a fast forwarded game of our AI agent VS our AI agent, the actual duration was total 6 minutes (3 minutes per side). - hence the initial moves are symmetric
 - My observations on runtime (On an Intel i7 9th Gen CPU):
 	* Initial Game: All pieces are in their respective camps, these moves take 0.002s to 5s.
 	* Mid Game: All pieces are out of their respective camps, these moves take 5s to 30s.
